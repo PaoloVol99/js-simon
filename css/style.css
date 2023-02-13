@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.numbers-wrapper,
+.guesses-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -20px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pc-number,
+.guess-number {
+    padding: 0 20px;
+    width: calc((100% - 40px) / 5);
+    border-radius: 10px;
+    font-size: 30px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.pc-number {
+    background-color: grey;
+}
