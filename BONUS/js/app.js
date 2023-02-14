@@ -21,8 +21,8 @@ playBtn.addEventListener('click', function() {
         pcNumElements[i].classList.add('pc-number')
     }
     
-    setTimeout(hideNumbers, 3000)
-    setTimeout(timeIsUp, 3100)
+    setTimeout(hideNumbers, 30000)
+    setTimeout(timeIsUp, 30100)
     clearTimeout(hideNumbers)
     clearTimeout(timeIsUp)
 })
