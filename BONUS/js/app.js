@@ -3,6 +3,7 @@ const pcNumElements = document.querySelectorAll('.numbers-wrapper span')
 const guessesElements = document.querySelectorAll('.guesses-wrapper span')
 const playBtn = document.getElementById('play')
 let pcNum = []
+let rightGuesses = []
 
 playBtn.addEventListener('click', function() {
     guessesElements.innerHTML = ""
@@ -21,8 +22,8 @@ playBtn.addEventListener('click', function() {
         pcNumElements[i].classList.add('pc-number')
     }
     
-    setTimeout(hideNumbers, 30000)
-    setTimeout(timeIsUp, 30100)
+    setTimeout(hideNumbers, 3000)
+    setTimeout(timeIsUp, 3100)
     clearTimeout(hideNumbers)
     clearTimeout(timeIsUp)
 })
@@ -44,11 +45,17 @@ function revealNumbers() {
 }
 
 function areGuessesRight(array1, array2) {
-    let rightguess = 0
-    for (let i = 0; i < array2.length; i++) {
+    let rightGuess = 0
+    for (let i = 0; i < array1.length; i++) {
         if (array2.includes(array1[i])) {
-            rightguess++
-            console.log(rightguess)
+            rightGuess++
+            rightGuesses.push(array1[i])
+            let guessedIndex = array2.indexOf(parseInt(array1[i]))
+            console.log('guessed', guessedIndex)
+            console.log(array1)
+            array2.splice(guessedIndex, 1)
+            console.log('array2', array2, 'array1', array1)
+            console.log(rightGuess)
         }
     }
 }
@@ -62,9 +69,10 @@ function printGuessesWithColors(array, arrayOfElements, array2) {
 }
 
 function greenRightRedWrong(arrayOfElements, array) {
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < arrayOfElements.length; i++) {
         if (array.includes(parseInt(arrayOfElements[i].innerHTML))) {
             arrayOfElements[i].style.backgroundColor = 'green'
+            array.splice(array.indexOf(parseInt(arrayOfElements[i].innerHTML)), 1)
         } else {
             arrayOfElements[i].style.backgroundColor = 'red'
         }
@@ -80,7 +88,6 @@ function timeIsUp() {
         guesses.push(guess)
     }
     revealNumbers()
-    console.log(guesses)
-    areGuessesRight(pcNum, guesses)
-    printGuessesWithColors(guesses, guessesElements, pcNum)
+    areGuessesRight(guesses, pcNum)
+    printGuessesWithColors(guesses, guessesElements, rightGuesses)
 }
