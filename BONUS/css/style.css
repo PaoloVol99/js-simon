@@ -13,6 +13,19 @@ body {
     margin: 0 auto;
 }
 
+#play {
+    background-color: dodgerblue;
+    color: white;
+    padding: 0 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+    margin-top: 50px;
+    line-height: 70px;
+    font-size: 24px;
+}
+
 .numbers-wrapper,
 .guesses-wrapper {
     display: flex;

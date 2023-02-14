@@ -1,25 +1,32 @@
 let randomNum = (min, max) => Math.floor(Math.random() * max + min)
-const pcNumElements = document.querySelectorAll('.pc-number')
+const pcNumElements = document.querySelectorAll('.numbers-wrapper span')
 const guessesElements = document.querySelectorAll('.guesses-wrapper span')
+const playBtn = document.getElementById('play')
 let pcNum = []
 
-
-
-while (pcNum.length < 5) {
-    let currentNumber = randomNum(1, 100)
-    if (!pcNum.includes(currentNumber)) {
-        pcNum.push(currentNumber)
+playBtn.addEventListener('click', function() {
+    guessesElements.innerHTML = ""
+    pcNum = []
+    guesses = []
+    while (pcNum.length < 5) {
+        let currentNumber = randomNum(1, 100)
+        if (!pcNum.includes(currentNumber)) {
+            pcNum.push(currentNumber)
+        }
     }
-}
+    
+    
+    for (let i = 0; i < pcNum.length; i++) {
+        pcNumElements[i].innerHTML = pcNum[i]
+        pcNumElements[i].classList.add('pc-number')
+    }
+    
+    setTimeout(hideNumbers, 3000)
+    setTimeout(timeIsUp, 3100)
+    clearTimeout(hideNumbers)
+    clearTimeout(timeIsUp)
+})
 
-console.log(pcNum)
-
-for (let i = 0; i < pcNum.length; i++) {
-    pcNumElements[i].innerHTML = pcNum[i]
-}
-
-setTimeout(hideNumbers, 30000)
-setTimeout(timeIsUp, 30100)
 
 
 //////////// FUNCTIONS ////////////
